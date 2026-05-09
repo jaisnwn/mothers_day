@@ -3,103 +3,184 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Mother's Day</title>
+<title>Happy Mother's Day Mumma 🤍</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
-background:linear-gradient(to bottom,#f8e8ff,#fff0f5);
-overflow:hidden;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.container{
-text-align:center;
-padding:30px;
-width:90%;
-max-width:400px;
-background:white;
-border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-animation:fadeIn 2s ease;
-position:relative;
-z-index:2;
-}
-
-.small{
-color:#b57edc;
-letter-spacing:3px;
-font-size:14px;
-margin-bottom:10px;
-}
-
-h1{
-font-size:45px;
-color:#333;
-line-height:1.2;
-}
-
-p{
-margin-top:20px;
-color:#666;
-font-size:18px;
-}
-
-button{
-margin-top:30px;
-padding:15px 30px;
-border:none;
-border-radius:50px;
-background:#b57edc;
-color:white;
-font-size:18px;
-cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-transform:scale(1.05);
-}
-
-.message{
-display:none;
-margin-top:25px;
+background:linear-gradient(to bottom,#fff0f6,#f7ebff);
+overflow-x:hidden;
 color:#444;
-font-size:18px;
-animation:fadeIn 1s ease;
+text-align:center;
 }
+
+/* Floating Hearts */
 
 .heart{
-position:absolute;
-color:pink;
+position:fixed;
+bottom:-20px;
 font-size:20px;
-animation:float 6s linear infinite;
+animation:float linear infinite;
+opacity:0.7;
+z-index:0;
 }
 
 @keyframes float{
 0%{
-transform:translateY(100vh) scale(0);
+transform:translateY(0) rotate(0deg);
 opacity:0;
 }
 50%{
 opacity:1;
 }
 100%{
-transform:translateY(-100vh) scale(1.5);
+transform:translateY(-110vh) rotate(360deg);
 opacity:0;
 }
 }
+
+/* Main Container */
+
+.container{
+padding:40px 20px;
+position:relative;
+z-index:2;
+}
+
+.title{
+font-size:52px;
+margin-top:50px;
+color:#333;
+animation:fadeIn 2s ease;
+}
+
+.subtitle{
+margin-top:20px;
+font-size:18px;
+color:#666;
+animation:fadeIn 3s ease;
+}
+
+.btn{
+margin-top:35px;
+padding:16px 35px;
+border:none;
+border-radius:50px;
+background:#c084fc;
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* Options */
+
+.options{
+display:none;
+margin-top:40px;
+animation:fadeIn 1s ease;
+}
+
+.option-btn{
+display:block;
+margin:20px auto;
+padding:18px 30px;
+width:320px;
+border:none;
+border-radius:25px;
+background:white;
+font-size:18px;
+cursor:pointer;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.option-btn:hover{
+transform:translateY(-5px);
+}
+
+/* Timeline */
+
+.timeline{
+display:none;
+margin-top:60px;
+}
+
+.year-card{
+background:white;
+padding:20px;
+border-radius:25px;
+margin:35px auto;
+max-width:550px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+animation:slideUp 1s ease;
+}
+
+.year{
+font-size:30px;
+font-weight:bold;
+color:#c084fc;
+}
+
+.memory{
+margin-top:10px;
+font-size:17px;
+line-height:1.7;
+}
+
+.year-card img{
+width:100%;
+height:320px;
+object-fit:cover;
+border-radius:20px;
+margin-top:20px;
+transition:0.4s;
+}
+
+.year-card img:hover{
+transform:scale(1.02);
+}
+
+/* Letter */
+
+.letter{
+display:none;
+margin-top:70px;
+background:white;
+padding:35px;
+border-radius:25px;
+max-width:700px;
+margin-left:auto;
+margin-right:auto;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+line-height:2;
+font-size:18px;
+animation:fadeIn 1s ease;
+text-align:left;
+}
+
+.letter h2{
+text-align:center;
+margin-bottom:25px;
+color:#c084fc;
+}
+
+/* Animations */
 
 @keyframes fadeIn{
 from{
@@ -111,44 +192,268 @@ opacity:1;
 transform:translateY(0);
 }
 }
+
+@keyframes slideUp{
+from{
+opacity:0;
+transform:translateY(50px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
 </style>
 </head>
 
 <body>
 
 <div class="container">
-<div class="small">🌸 TO THE BEST MOM EVER 🌸</div>
 
-<h1>Happy<br>Mother’s Day<br>Mummy! 🤍</h1>
+<h1 class="title">Happy Mother’s Day Mumma 🤍</h1>
 
-<p>
-Thank you for loving me, supporting me,
-and always believing in me.
+<p class="subtitle">
+A beautiful journey from 2006 → 2026 ✨
 </p>
 
-<button onclick="showMessage()">Open Your Surprise 🎁</button>
+<button class="btn" onclick="openSurprise()">
+Open Surprise 🎁
+</button>
 
-<div class="message" id="message">
-Mummy, one day I’ll make you proud and give you everything you deserve 🤍
+<div class="options" id="options">
+
+<button class="option-btn" onclick="showTimeline()">
+📸 Our Journey Together (2006 → 2026)
+</button>
+
+<button class="option-btn" onclick="showLetter()">
+💌 Open Letter
+</button>
+
 </div>
+
+<!-- Timeline -->
+
+<div class="timeline" id="timeline">
+
+<div class="year-card">
+<div class="year">2006</div>
+<div class="memory">The year our beautiful journey started 🤍</div>
+<img src="photo1.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2007</div>
+<div class="memory">Tiny hands, your endless love ✨</div>
+<img src="photo2.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2008</div>
+<div class="memory">Every moment felt warm because of you 🌸</div>
+<img src="photo3.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2009</div>
+<div class="memory">Growing up with your hugs and care 🥹</div>
+<img src="photo4.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2010</div>
+<div class="memory">Childhood memories I’ll cherish forever 💖</div>
+<img src="photo5.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2011</div>
+<div class="memory">Every smile of mine had you behind it ✨</div>
+<img src="photo6.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2012</div>
+<div class="memory">School days and your constant support 📚</div>
+<img src="photo7.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2013</div>
+<div class="memory">You always made ordinary days magical 🤍</div>
+<img src="photo8.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2014</div>
+<div class="memory">Memories filled with laughter and love 🌷</div>
+<img src="photo9.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2015</div>
+<div class="memory">You believed in me before I believed in myself 🥹</div>
+<img src="photo10.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2016</div>
+<div class="memory">Growing stronger because of your guidance ✨</div>
+<img src="photo11.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2017</div>
+<div class="memory">Little moments, lifelong memories 💕</div>
+<img src="photo12.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2018</div>
+<div class="memory">No matter what happened, you stayed strong 🌸</div>
+<img src="photo13.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2019</div>
+<div class="memory">The safest place was always beside you 🤍</div>
+<img src="photo14.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2020</div>
+<div class="memory">Together through every up and down 🫶🏻</div>
+<img src="photo15.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2021</div>
+<div class="memory">You never stopped believing in me ✨</div>
+<img src="photo16.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2022</div>
+<div class="memory">Distance made me realize your value even more 🥹</div>
+<img src="photo17.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2023</div>
+<div class="memory">Still your little child forever 💖</div>
+<img src="photo18.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2024</div>
+<div class="memory">Every achievement of mine belongs to you 🌷</div>
+<img src="photo19.jpg">
+</div>
+
+<div class="year-card">
+<div class="year">2026</div>
+<div class="memory">One day I’ll make you the happiest and proudest mummy 🤍</div>
+<img src="photo20.jpg">
+</div>
+
+</div>
+
+<!-- Letter -->
+
+<div class="letter" id="letter">
+
+<h2>Dear Mumma ❤️</h2>
+
+<p>
+I can’t express my feelings openly but I care a lot!
+I may not be always right but I know I always have your back.
+</p>
+
+<p>
+You have always been the strongest person I know.
+Struggling through many ups and downs, you never collapsed, you had that courage to overcome all the challenges that we’ve faced in the last few years.
+</p>
+
+<p>
+Sometimes I may be too rude towards you but I never really have any intentions to hurt you.
+You’ve been my biggest cheerleader and also my inspiration.
+</p>
+
+<p>
+I always look up to you like —
+“mumma sarkh aplya payavar ubh rahaych ahe!” 🥹
+</p>
+
+<p>
+It is really hard for me to stay this long from you but I hope it’s for the best.
+</p>
+
+<p>
+Mummy, you always had faith in me that one day I would get the best job and make you proud… and next semester, I finally will! 🤍
+</p>
+
+<p>
+I hope I get to fulfill all your wishes you left behind sacrificing for our family! 🥹
+</p>
+
+<p>
+Happy Mother’s Day! 💗
+</p>
+
+<p style="margin-top:25px;">
+Yours lovingly,<br>
+Sonu 🫶🏻
+</p>
+
+</div>
+
 </div>
 
 <script>
-function showMessage(){
-document.getElementById("message").style.display="block";
+
+function openSurprise(){
+document.getElementById("options").style.display="block";
 }
 
-for(let i=0;i<25;i++){
+function showTimeline(){
+document.getElementById("timeline").style.display="block";
+
+window.scrollTo({
+top:document.getElementById("timeline").offsetTop,
+behavior:"smooth"
+});
+}
+
+function showLetter(){
+document.getElementById("letter").style.display="block";
+
+window.scrollTo({
+top:document.getElementById("letter").offsetTop,
+behavior:"smooth"
+});
+}
+
+/* Floating Hearts */
+
+for(let i=0;i<45;i++){
+
 let heart=document.createElement("div");
+
 heart.classList.add("heart");
+
 heart.innerHTML="🤍";
 
 heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(3+Math.random()*5)+"s";
+
 heart.style.fontSize=(15+Math.random()*25)+"px";
 
+heart.style.animationDuration=(4+Math.random()*8)+"s";
+
 document.body.appendChild(heart);
+
 }
+
 </script>
 
 </body>
