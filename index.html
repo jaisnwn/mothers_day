@@ -21,7 +21,6 @@ body{
 background:linear-gradient(to bottom,#fff0f6,#f7ebff);
 overflow-x:hidden;
 color:#444;
-text-align:center;
 }
 
 /* Floating Hearts */
@@ -49,24 +48,37 @@ opacity:0;
 }
 }
 
-/* Main Container */
+/* Pages */
 
-.container{
+.page{
+min-height:100vh;
 padding:40px 20px;
+display:none;
 position:relative;
 z-index:2;
 }
 
+#home{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+/* Home Page */
+
 .title{
-font-size:52px;
-margin-top:50px;
+font-size:55px;
 color:#333;
 animation:fadeIn 2s ease;
 }
 
 .subtitle{
-margin-top:20px;
-font-size:18px;
+margin-top:25px;
+font-size:20px;
+max-width:700px;
+line-height:1.8;
 color:#666;
 animation:fadeIn 3s ease;
 }
@@ -88,12 +100,8 @@ box-shadow:0 8px 20px rgba(0,0,0,0.1);
 transform:scale(1.05);
 }
 
-/* Options */
-
 .options{
-display:none;
 margin-top:40px;
-animation:fadeIn 1s ease;
 }
 
 .option-btn{
@@ -114,70 +122,82 @@ transition:0.3s;
 transform:translateY(-5px);
 }
 
-/* Timeline */
+/* Photo Gallery */
 
-.timeline{
-display:none;
-margin-top:60px;
+.gallery-title{
+text-align:center;
+font-size:45px;
+margin-bottom:15px;
+color:#333;
 }
 
-.year-card{
+.gallery-subtitle{
+text-align:center;
+color:#777;
+margin-bottom:40px;
+font-size:18px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:20px;
+max-width:1200px;
+margin:auto;
+}
+
+.photo-card{
 background:white;
-padding:20px;
+padding:10px;
 border-radius:25px;
-margin:35px auto;
-max-width:550px;
 box-shadow:0 10px 25px rgba(0,0,0,0.08);
-animation:slideUp 1s ease;
-}
-
-.year{
-font-size:30px;
-font-weight:bold;
-color:#c084fc;
-}
-
-.memory{
-margin-top:10px;
-font-size:17px;
-line-height:1.7;
-}
-
-.year-card img{
-width:100%;
-height:320px;
-object-fit:cover;
-border-radius:20px;
-margin-top:20px;
 transition:0.4s;
+border:3px solid #f3d9ff;
 }
 
-.year-card img:hover{
-transform:scale(1.02);
+.photo-card:hover{
+transform:translateY(-8px) scale(1.03);
 }
 
-/* Letter */
+.photo-card img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:18px;
+}
 
-.letter{
-display:none;
-margin-top:70px;
+/* Letter Page */
+
+.letter-box{
 background:white;
 padding:35px;
 border-radius:25px;
-max-width:700px;
-margin-left:auto;
-margin-right:auto;
+max-width:800px;
+margin:40px auto;
 box-shadow:0 10px 25px rgba(0,0,0,0.08);
 line-height:2;
 font-size:18px;
 animation:fadeIn 1s ease;
-text-align:left;
 }
 
-.letter h2{
+.letter-box h2{
 text-align:center;
 margin-bottom:25px;
 color:#c084fc;
+}
+
+/* Back Button */
+
+.back-btn{
+display:block;
+margin:40px auto 0;
+padding:14px 30px;
+border:none;
+border-radius:50px;
+background:#c084fc;
+color:white;
+font-size:16px;
+cursor:pointer;
 }
 
 /* Animations */
@@ -193,175 +213,115 @@ transform:translateY(0);
 }
 }
 
-@keyframes slideUp{
-from{
-opacity:0;
-transform:translateY(50px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- HOME PAGE -->
+
+<div class="page" id="home">
 
 <h1 class="title">Happy Mother’s Day Mumma 🤍</h1>
 
 <p class="subtitle">
-A beautiful journey from 2006 → 2026 ✨
+To the woman who gave me everything without ever asking for anything in return...
+Thank you for loving me endlessly, believing in me during my worst days, and standing beside me through every phase of life.
+This little surprise holds some of our most precious memories together ✨
 </p>
 
-<button class="btn" onclick="openSurprise()">
+<button class="btn" onclick="showOptions()">
 Open Surprise 🎁
 </button>
 
-<div class="options" id="options">
+<div class="options" id="options" style="display:none;">
 
-<button class="option-btn" onclick="showTimeline()">
-📸 Our Journey Together (2006 → 2026)
+<button class="option-btn" onclick="openPhotos()">
+📸 Our Beautiful Memories
 </button>
 
-<button class="option-btn" onclick="showLetter()">
-💌 Open Letter
+<button class="option-btn" onclick="openLetter()">
+💌 A Letter For You
 </button>
 
 </div>
 
-<!-- Timeline -->
-
-<div class="timeline" id="timeline">
-
-<div class="year-card">
-<div class="year">2006</div>
-<div class="memory">The year our beautiful journey started 🤍</div>
-<img src="photo1.jpg">
 </div>
 
-<div class="year-card">
-<div class="year">2007</div>
-<div class="memory">Tiny hands, your endless love ✨</div>
-<img src="photo2.jpg">
-</div>
+<!-- PHOTO PAGE -->
 
-<div class="year-card">
-<div class="year">2008</div>
-<div class="memory">Every moment felt warm because of you 🌸</div>
-<img src="photo3.jpg">
-</div>
+<div class="page" id="photosPage">
 
-<div class="year-card">
-<div class="year">2009</div>
-<div class="memory">Growing up with your hugs and care 🥹</div>
-<img src="photo4.jpg">
-</div>
+<h1 class="gallery-title">Our Beautiful Memories 📸</h1>
 
-<div class="year-card">
-<div class="year">2010</div>
-<div class="memory">Childhood memories I’ll cherish forever 💖</div>
-<img src="photo5.jpg">
-</div>
+<p class="gallery-subtitle">
+48 little moments that mean the world to me 🤍
+</p>
 
-<div class="year-card">
-<div class="year">2011</div>
-<div class="memory">Every smile of mine had you behind it ✨</div>
-<img src="photo6.jpg">
-</div>
+<div class="gallery">
 
-<div class="year-card">
-<div class="year">2012</div>
-<div class="memory">School days and your constant support 📚</div>
-<img src="photo7.jpg">
-</div>
-
-<div class="year-card">
-<div class="year">2013</div>
-<div class="memory">You always made ordinary days magical 🤍</div>
-<img src="photo8.jpg">
-</div>
-
-<div class="year-card">
-<div class="year">2014</div>
-<div class="memory">Memories filled with laughter and love 🌷</div>
-<img src="photo9.jpg">
-</div>
-
-<div class="year-card">
-<div class="year">2015</div>
-<div class="memory">You believed in me before I believed in myself 🥹</div>
-<img src="photo10.jpg">
-</div>
-
-<div class="year-card">
-<div class="year">2016</div>
-<div class="memory">Growing stronger because of your guidance ✨</div>
-<img src="photo11.jpg">
-</div>
-
-<div class="year-card">
-<div class="year">2017</div>
-<div class="memory">Little moments, lifelong memories 💕</div>
-<img src="photo12.jpg">
-</div>
-
-<div class="year-card">
-<div class="year">2018</div>
-<div class="memory">No matter what happened, you stayed strong 🌸</div>
-<img src="photo13.jpg">
-</div>
-
-<div class="year-card">
-<div class="year">2019</div>
-<div class="memory">The safest place was always beside you 🤍</div>
-<img src="photo14.jpg">
-</div>
-
-<div class="year-card">
-<div class="year">2020</div>
-<div class="memory">Together through every up and down 🫶🏻</div>
-<img src="photo15.jpg">
-</div>
-
-<div class="year-card">
-<div class="year">2021</div>
-<div class="memory">You never stopped believing in me ✨</div>
-<img src="photo16.jpg">
-</div>
-
-<div class="year-card">
-<div class="year">2022</div>
-<div class="memory">Distance made me realize your value even more 🥹</div>
-<img src="photo17.jpg">
-</div>
-
-<div class="year-card">
-<div class="year">2023</div>
-<div class="memory">Still your little child forever 💖</div>
-<img src="photo18.jpg">
-</div>
-
-<div class="year-card">
-<div class="year">2024</div>
-<div class="memory">Every achievement of mine belongs to you 🌷</div>
-<img src="photo19.jpg">
-</div>
-
-<div class="year-card">
-<div class="year">2026</div>
-<div class="memory">One day I’ll make you the happiest and proudest mummy 🤍</div>
-<img src="photo20.jpg">
-</div>
+<div class="photo-card"><img src="photo1.jpg"></div>
+<div class="photo-card"><img src="photo2.jpg"></div>
+<div class="photo-card"><img src="photo3.jpg"></div>
+<div class="photo-card"><img src="photo4.jpg"></div>
+<div class="photo-card"><img src="photo5.jpg"></div>
+<div class="photo-card"><img src="photo6.jpg"></div>
+<div class="photo-card"><img src="photo7.jpg"></div>
+<div class="photo-card"><img src="photo8.jpg"></div>
+<div class="photo-card"><img src="photo9.jpg"></div>
+<div class="photo-card"><img src="photo10.jpg"></div>
+<div class="photo-card"><img src="photo11.jpg"></div>
+<div class="photo-card"><img src="photo12.jpg"></div>
+<div class="photo-card"><img src="photo13.jpg"></div>
+<div class="photo-card"><img src="photo14.jpg"></div>
+<div class="photo-card"><img src="photo15.jpg"></div>
+<div class="photo-card"><img src="photo16.jpg"></div>
+<div class="photo-card"><img src="photo17.jpg"></div>
+<div class="photo-card"><img src="photo18.jpg"></div>
+<div class="photo-card"><img src="photo19.jpg"></div>
+<div class="photo-card"><img src="photo20.jpg"></div>
+<div class="photo-card"><img src="photo21.jpg"></div>
+<div class="photo-card"><img src="photo22.jpg"></div>
+<div class="photo-card"><img src="photo23.jpg"></div>
+<div class="photo-card"><img src="photo24.jpg"></div>
+<div class="photo-card"><img src="photo25.jpg"></div>
+<div class="photo-card"><img src="photo26.jpg"></div>
+<div class="photo-card"><img src="photo27.jpg"></div>
+<div class="photo-card"><img src="photo28.jpg"></div>
+<div class="photo-card"><img src="photo29.jpg"></div>
+<div class="photo-card"><img src="photo30.jpg"></div>
+<div class="photo-card"><img src="photo31.jpg"></div>
+<div class="photo-card"><img src="photo32.jpg"></div>
+<div class="photo-card"><img src="photo33.jpg"></div>
+<div class="photo-card"><img src="photo34.jpg"></div>
+<div class="photo-card"><img src="photo35.jpg"></div>
+<div class="photo-card"><img src="photo36.jpg"></div>
+<div class="photo-card"><img src="photo37.jpg"></div>
+<div class="photo-card"><img src="photo38.jpg"></div>
+<div class="photo-card"><img src="photo39.jpg"></div>
+<div class="photo-card"><img src="photo40.jpg"></div>
+<div class="photo-card"><img src="photo41.jpg"></div>
+<div class="photo-card"><img src="photo42.jpg"></div>
+<div class="photo-card"><img src="photo43.jpg"></div>
+<div class="photo-card"><img src="photo44.jpg"></div>
+<div class="photo-card"><img src="photo45.jpg"></div>
+<div class="photo-card"><img src="photo46.jpg"></div>
+<div class="photo-card"><img src="photo47.jpg"></div>
+<div class="photo-card"><img src="photo48.jpg"></div>
 
 </div>
 
-<!-- Letter -->
+<button class="back-btn" onclick="goHome()">
+⬅ Back To Home
+</button>
 
-<div class="letter" id="letter">
+</div>
+
+<!-- LETTER PAGE -->
+
+<div class="page" id="letterPage">
+
+<div class="letter-box">
 
 <h2>Dear Mumma ❤️</h2>
 
@@ -371,8 +331,7 @@ I may not be always right but I know I always have your back.
 </p>
 
 <p>
-You have always been the strongest person I know.
-Struggling through many ups and downs, you never collapsed, you had that courage to overcome all the challenges that we’ve faced in the last few years.
+You have always been a strongest person I know. Struggling through many ups and downs, you never collapsed, you had that courage to overcome all the challenges that we’ve faced in last few years.
 </p>
 
 <p>
@@ -408,35 +367,53 @@ Sonu 🫶🏻
 
 </div>
 
+<button class="back-btn" onclick="goHome()">
+⬅ Back To Home
+</button>
+
 </div>
 
 <script>
 
-function openSurprise(){
+/* Start Home Page */
+
+document.getElementById("home").style.display="flex";
+
+/* Show Buttons */
+
+function showOptions(){
 document.getElementById("options").style.display="block";
 }
 
-function showTimeline(){
-document.getElementById("timeline").style.display="block";
+/* Open Pages */
 
-window.scrollTo({
-top:document.getElementById("timeline").offsetTop,
-behavior:"smooth"
-});
+function openPhotos(){
+hideAllPages();
+document.getElementById("photosPage").style.display="block";
+window.scrollTo(0,0);
 }
 
-function showLetter(){
-document.getElementById("letter").style.display="block";
+function openLetter(){
+hideAllPages();
+document.getElementById("letterPage").style.display="block";
+window.scrollTo(0,0);
+}
 
-window.scrollTo({
-top:document.getElementById("letter").offsetTop,
-behavior:"smooth"
-});
+function goHome(){
+hideAllPages();
+document.getElementById("home").style.display="flex";
+window.scrollTo(0,0);
+}
+
+function hideAllPages(){
+document.getElementById("home").style.display="none";
+document.getElementById("photosPage").style.display="none";
+document.getElementById("letterPage").style.display="none";
 }
 
 /* Floating Hearts */
 
-for(let i=0;i<45;i++){
+for(let i=0;i<50;i++){
 
 let heart=document.createElement("div");
 
