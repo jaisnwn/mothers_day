@@ -58,6 +58,8 @@ position:relative;
 z-index:2;
 }
 
+/* Home */
+
 #home{
 display:flex;
 flex-direction:column;
@@ -65,8 +67,6 @@ justify-content:center;
 align-items:center;
 text-align:center;
 }
-
-/* Home Page */
 
 .title{
 font-size:55px;
@@ -102,6 +102,7 @@ transform:scale(1.05);
 
 .options{
 margin-top:40px;
+display:none;
 }
 
 .option-btn{
@@ -122,7 +123,7 @@ transition:0.3s;
 transform:translateY(-5px);
 }
 
-/* Photo Gallery */
+/* Gallery */
 
 .gallery-title{
 text-align:center;
@@ -140,7 +141,7 @@ font-size:18px;
 
 .gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
 gap:20px;
 max-width:1200px;
 margin:auto;
@@ -166,7 +167,7 @@ object-fit:cover;
 border-radius:18px;
 }
 
-/* Letter Page */
+/* Letter */
 
 .letter-box{
 background:white;
@@ -186,6 +187,14 @@ margin-bottom:25px;
 color:#c084fc;
 }
 
+/* Video */
+
+video{
+width:100%;
+border-radius:25px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
 /* Back Button */
 
 .back-btn{
@@ -200,7 +209,7 @@ font-size:16px;
 cursor:pointer;
 }
 
-/* Animations */
+/* Animation */
 
 @keyframes fadeIn{
 from{
@@ -226,15 +235,14 @@ transform:translateY(0);
 
 <p class="subtitle">
 To the woman who gave me everything without ever asking for anything in return...
-Thank you for loving me endlessly, believing in me , and standing beside me through every phase of life.
-This little surprise holds some of our most precious memories together ✨
+Thank you for loving me endlessly, believing in me during my worst days, and standing beside me through every phase of life ✨
 </p>
 
 <button class="btn" onclick="showOptions()">
 Open Surprise 🎁
 </button>
 
-<div class="options" id="options" style="display:none;">
+<div class="options" id="options">
 
 <button class="option-btn" onclick="openPhotos()">
 📸 Our Beautiful Memories
@@ -244,18 +252,22 @@ Open Surprise 🎁
 💌 A Letter For You
 </button>
 
-</div>
+<button class="option-btn" onclick="openVideo()">
+🎥 A Special Video
+</button>
 
 </div>
 
-<!-- PHOTO PAGE -->
+</div>
+
+<!-- PHOTOS PAGE -->
 
 <div class="page" id="photosPage">
 
 <h1 class="gallery-title">Our Beautiful Memories 📸</h1>
 
 <p class="gallery-subtitle">
-Little moments that mean the world to me 🤍
+Some of my favorite moments with you forever 🤍
 </p>
 
 <div class="gallery">
@@ -273,11 +285,11 @@ Little moments that mean the world to me 🤍
 </div>
 
 <div class="photo-card">
-<img src="./IMG_1072.jpg">
+<img src="./IMG_1072.HEIC">
 </div>
 
 <div class="photo-card">
-<img src="./IMG_7471.jpg">
+<img src="./IMG_7471.HEIC">
 </div>
 
 <div class="photo-card">
@@ -293,15 +305,15 @@ Little moments that mean the world to me 🤍
 </div>
 
 <div class="photo-card">
-<img src="./IMG_3728.jpg">
+<img src="./IMG_3728.HEIC">
 </div>
 
 <div class="photo-card">
-<img src="./IMG_6970.jpg">
+<img src="./IMG_6970.HEIC">
 </div>
 
 <div class="photo-card">
-<img src="./IMG_7658.jpg">
+<img src="./IMG_7658.HEIC">
 </div>
 
 <div class="photo-card">
@@ -325,6 +337,7 @@ Little moments that mean the world to me 🤍
 </div>
 
 </div>
+
 <button class="back-btn" onclick="goHome()">
 ⬅ Back To Home
 </button>
@@ -345,7 +358,8 @@ I may not be always right but I know I always have your back.
 </p>
 
 <p>
-You have always been a strongest person I know. Struggling through many ups and downs, you never collapsed, you had that courage to overcome all the challenges that we’ve faced in last few years.
+You have always been the strongest person I know.
+Struggling through many ups and downs, you never collapsed, you had that courage to overcome all the challenges that we’ve faced in last few years.
 </p>
 
 <p>
@@ -387,13 +401,37 @@ Sonu 🫶🏻
 
 </div>
 
+<!-- VIDEO PAGE -->
+
+<div class="page" id="videoPage">
+
+<h1 class="gallery-title">A Special Video 🎥</h1>
+
+<p class="gallery-subtitle">
+A little memory filled with love 🤍
+</p>
+
+<div style="max-width:700px; margin:auto;">
+
+<video controls autoplay muted loop>
+<source src="./mummyvideo.mp4" type="video/mp4">
+</video>
+
+</div>
+
+<button class="back-btn" onclick="goHome()">
+⬅ Back To Home
+</button>
+
+</div>
+
 <script>
 
-/* Start Home Page */
+/* Start Home */
 
 document.getElementById("home").style.display="flex";
 
-/* Show Buttons */
+/* Show Options */
 
 function showOptions(){
 document.getElementById("options").style.display="block";
@@ -413,21 +451,32 @@ document.getElementById("letterPage").style.display="block";
 window.scrollTo(0,0);
 }
 
+function openVideo(){
+hideAllPages();
+document.getElementById("videoPage").style.display="block";
+window.scrollTo(0,0);
+}
+
+/* Go Home */
+
 function goHome(){
 hideAllPages();
 document.getElementById("home").style.display="flex";
 window.scrollTo(0,0);
 }
 
+/* Hide All */
+
 function hideAllPages(){
 document.getElementById("home").style.display="none";
 document.getElementById("photosPage").style.display="none";
 document.getElementById("letterPage").style.display="none";
+document.getElementById("videoPage").style.display="none";
 }
 
 /* Floating Hearts */
 
-for(let i=0;i<50;i++){
+for(let i=0;i<40;i++){
 
 let heart=document.createElement("div");
 
@@ -449,3 +498,4 @@ document.body.appendChild(heart);
 
 </body>
 </html>
+
